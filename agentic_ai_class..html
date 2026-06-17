@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Applied Agentic AI Systems, Design & Impact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        :root {
+            --primary: #4a2c82;
+            --accent: #ffb74d;
+            --bg: #f5f5f5;
+            --card-bg: #ffffff;
+            --text: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--primary);
+            color: #ffffff;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        .sidebar p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .nav-section-title {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.8;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+        }
+
+        .nav-list li {
+            margin-bottom: 6px;
+        }
+
+        .nav-list a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 6px 8px;
+            border-radius: 4px;
+            display: block;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .nav-list a:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateX(2px);
+        }
+
+        /* Main content */
+        .main {
+            flex: 1;
+            padding: 24px;
+        }
+
+        .header-card {
+            background: linear-gradient(135deg, var(--primary), #6a4fb8);
+            color: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .header-card h1 {
+            margin: 0 0 8px;
+            font-size: 1.8rem;
+        }
+
+        .header-card p {
+            margin: 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .tag-row {
+            margin-top: 12px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.18);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 4px;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 24px;
+        }
+
+        section h2 {
+            margin: 0 0 8px;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        section p {
+            margin: 4px 0 10px;
+            font-size: 0.95rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            margin-bottom: 12px;
+        }
+
+        ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Collapsible modules */
+        .module {
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            cursor: pointer;
+            background: #fafafa;
+        }
+
+        .module-header h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        .module-header span {
+            font-size: 0.8rem;
+            color: #666666;
+        }
+
+        .module-body {
+            padding: 0 16px 12px;
+            display: none;
+        }
+
+        .module.open .module-body {
+            display: block;
+        }
+
+        .module.open .module-header {
+            background: #f0e9ff;
+        }
+
+        .module-toggle-icon {
+            font-size: 1.1rem;
+            margin-left: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .layout {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <h2>Agentic AI Program</h2>
+        <p>10‑week professional course on applied agentic AI systems, design, and impact.</p>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Overview</div>
+            <ul class="nav-list">
+                <li><a href="#overview">Course Overview</a></li>
+                <li><a href="#objectives">Learning Objectives</a></li>
+                <li><a href="#structure">Course Structure</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Modules</div>
+            <ul class="nav-list">
+                <li><a href="#modules">All Modules</a></li>
+                <li><a href="#capstone">Capstone</a></li>
+            </ul>
+        </div>
+
+        <div class="nav-section">
+            <div class="nav-section-title">Extras</div>
+            <ul class="nav-list">
+                <li><a href="#tools">Tools Covered</a></li>
+                <li><a href="#assessment">Assessment</a></li>
+            </ul>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="header-card">
+            <h1>Applied Agentic AI Systems, Design & Impact</h1>
+            <p>Professional, cohort‑based program focused on building real agentic AI products.</p>
+            <p><strong>Duration:</strong> 10 weeks · <strong>Effort:</strong> 6–8 hours/week · <strong>Mode:</strong> Live virtual + hands‑on labs</p>
+            <div class="tag-row">
+                <span class="tag">Agentic AI</span>
+                <span class="tag">Multi‑Agent Systems</span>
+                <span class="tag">Azure AI</span>
+                <span class="tag">Product Strategy</span>
+            </div>
+        </div>
+
+        <section id="overview">
+            <h2>Course Overview</h2>
+            <p>
+                This class teaches students how to design, build, orchestrate, and deploy agentic AI systems using modern
+                frameworks such as LangChain, AutoGen, CrewAI, LangGraph, n8n, and Azure AI. It blends technical depth
+                with product thinking, focusing on planning systems, multi‑agent coordination, workflow automation, and
+                AI‑native product strategy.
+            </p>
+        </section>
+
+        <section id="objectives">
+            <h2>Learning Objectives</h2>
+            <div class="card">
+                <h3>Technical Objectives</h3>
+                <ul>
+                    <li>Build and orchestrate multi‑agent systems.</li>
+                    <li>Implement Retrieval‑Augmented Generation (RAG) pipelines with vector search.</li>
+                    <li>Use planning systems and function‑calling APIs to structure agent workflows.</li>
+                    <li>Integrate tools using the Model Context Protocol (MCP) for interoperability.</li>
+                    <li>Deploy agents on Azure and containerized environments.</li>
+                    <li>Automate workflows using n8n and AutoGen.</li>
+                    <li>Design agentic UX with transparency and human‑in‑the‑loop controls.</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Product & Strategy Objectives</h3>
+                <ul>
+                    <li>Evaluate agent performance using OKRs, latency, and ROI.</li>
+                    <li>Build AI‑native product strategies and go‑to‑market (GTM) plans.</li>
+                    <li>Create UX prototypes for agentic systems with trust and control.</li>
+                    <li>Develop enterprise‑ready AI solutions with compliance and security in mind.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="structure">
+            <h2>Course Structure</h2>
+            <div class="card">
+                <ul>
+                    <li>10 core modules covering foundations, tech stack, multi‑agent ecosystems, UX, and deployment.</li>
+                    <li>7+ hands‑on projects and guided practices.</li>
+                    <li>1 capstone project simulating real‑world product strategy and agent deployment.</li>
+                    <li>Live demos, discussions, and collaborative exercises.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="modules">
+            <h2>Modules (Collapsible)</h2>
+
+            <!-- Module 1 -->
+            <div class="module">
+                <div class="module-header">
+                    <div>
+                        <h3>Module 1 — Foundations of AI & Agentic AI</h3>
+                        <span>Duration: ~3 hours</span>
+                    </div>
+                    <div class="module-toggle-icon">+</div>
+                </div>
+                <div class="module-body">
+                    <ul>
+                        <li>AI → ML → DL → GenAI → Agentic AI hierarchy.</li>
+                        <li>Transformer architecture and key concepts.</li>
+                        <li>Chain‑of‑Thought (CoT), ReAct, and autonomous agent patterns.</li>
+                        <li>Learn → Build → Deploy framework for AI products.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 2 -->
+            <div class="module">
+                <div class="module-header">
+                    <div>
+                        <h3>Module 2 — GenAI Tech Stack & Prompt Engineering</h3>
+                        <span>Duration: ~6 hours</span>
+                    </div>
+                    <div class="module-toggle-icon">+</div>
+                </div>
+                <div class="module-body">
+                    <ul>
+                        <li>4‑layer GenAI stack: Infrastructure, Model, Orchestration, Application.</li>
+                        <li>Vector databases and retrieval strategies.</li>
+                        <li>Agent frameworks: LangChain, AutoGen, CrewAI, LangGraph.</li>
+                        <li>Prompt engineering: zero‑shot, CoT, ReAct techniques.</li>
+                        <li>Low‑code prototyping and rapid experimentation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 3 -->
+            <div class="module">
+                <div class="module-header">
+                    <div>
+                        <h3>Module 3 — LLM Internals & Planning Systems</h3>
+                        <span>Duration: ~6 hours</span>
+                    </div>
+                    <div class="module-toggle-icon">+</div>
+                </div>
+                <div class="module-body">
+                    <ul>
+                        <li>Function calling APIs and structured outputs.</li>
+                        <li>Planning workflows with agents and tools.</li>
+                        <li>Building Q&A bots with contextual knowledge.</li>
+                        <li>Designing multi‑step agents and RAG‑powered FAQ systems.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 4 -->
+            <div class="module">
+                <div class="module-header">
+                    <div>
+                        <h3>Module 4 — Multi‑Agent Ecosystems I</h3>
+                        <span>Duration: ~6 hours</span>
+                    </div>
+                    <div class="module-toggle-icon">+</div>
+                </div>
+                <div class="module-body">
+                    <ul>
+                        <li>Multi‑agent collaboration patterns and role‑based architectures.</li>
+                        <li>Memory strategies and state management.</li>
+                        <li>Hands‑on with CrewAI, LangGraph, MetaGPT.</li>
+                        <li>Designing an agentic RAG router system.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="module">
+                <div class="module-header">
+                    <div>
+                        <h3>Module 5 — Multi‑Agent Ecosystems II</h3>
+                        <span>Duration: ~9 hours</span>
+                    </div>
+                    <div class="module-toggle-icon">+</div>
+                </div>
+                <div class="module-body">
+                    <ul>
+                        <li>Enterprise‑grade agent orchestration with AutoGen.</li>
+                        <li>Workflow automation using n8n.</li>
+                        <li>Database integration (MongoDB, PostgreSQL, Pinecone).</li>
+                        <li>Compliance, security, and guardrails for agents.</li>
+                        <li>Project: AI‑powered LinkedIn content automation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="module">
+                <div class="module-header">
+                    <div>
+                        <h3>Module 6 — Model Context & Tooling Protocol (MCP)</h3>
+                        <span>Duration: ~6 hours</span>
+                    </div>
+                    <div class="module-toggle-icon">+</div>
+                </div>
+                <div class="module-body">
+                    <ul>
+                        <li>Model Context Protocol fundamentals.</li>
+                        <li>Context binding and schema design.</li>
+                        <li>Secure tool hosting and interoperability.</li>
+                        <li>Building contextual AI agents across tools.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="module">
+                <div class="module-header">
+                    <div>
+                        <h3>Module 7 — Metrics, GTM & ROI</h3>
+                        <span>Duration: ~3 hours</span>
+                    </div>
+                    <div class="module-toggle-icon">+</div>
+                </div>
+                <div class="module-body">
+                    <ul>
+                        <li>Agent performance metrics: success rate, latency, reliability.</li>
+                        <li>Observability with LangSmith and Phoenix.</li>
+                        <li>A/B testing AI responses and prompt variants.</li>
+                        <li>GTM strategy and ROI modeling for agentic products.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 8 -->
+            <div class="module">
+                <div class="module-header">
+                    <div>
+                        <h3>Module 8 — Agentic UX Design & Transparency</h3>
+                        <span>Duration: ~3 hours</span>
+                    </div>
+                    <div class="module-toggle-icon">+</div>
+                </div>
+                <div class="module-body">
+                    <ul>
+                        <li>Interaction design patterns for agentic UX.</li>
+                        <li>Human‑in‑the‑loop checkpoints and override flows.</li>
+                        <li>Explainability interfaces and confidence disclosures.</li>
+                        <li>Designing trust‑focused UX prototypes.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Module 9 -->
+            <div class="module">
+                <div class="module-header">
+                    <div>
+                        <h3>Module 9 — Dev Tools & Product Readiness</h3>
+                        <span>Duration: ~3 hours</span>
+                    </div>
+                    <div class="module-toggle-icon">+</div>
+                </div>
+                <div class="module-body">
+                    <ul>
+                        <li>Cloud vs edge hosting strategies.</li>
+                        <li>Serverless and containerized environments.</li>
+                        <li>Firebase, n8n, Terraform, Pulumi for infrastructure and automation.</li>
+                        <li>Logging, monitoring, and alerting for live agents.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="capstone">
+            <h2>Capstone Project</h2>
+            <div class="card">
+                <h3>Multi‑Agent Market Research & GTM System</h3>
+                <p>
+                    In the capstone, learners design and implement a multi‑agent system that performs market research,
+                    synthesizes insights, and proposes a go‑to‑market strategy. The system uses:
+                </p>
+                <ul>
+                    <li>A router agent to direct queries.</li>
+                    <li>Research agents to gather and summarize information.</li>
+                    <li>Analyst agents to interpret data and propose actions.</li>
+                    <li>Strategist agents to generate GTM plans and ROI estimates.</li>
+                    <li>Integration with MCP, n8n, and Azure AI for orchestration and deployment.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tools">
+            <h2>Tools & Frameworks Covered</h2>
+            <div class="card">
+                <ul>
+                    <li>LangChain, AutoGen, CrewAI, LangGraph, MetaGPT.</li>
+                    <li>n8n, Azure AI, Hugging Face, Pinecone.</li>
+                    <li>MongoDB, PostgreSQL, Firebase.</li>
+                    <li>Figma, Miro, GitHub Copilot, Jupyter, VS Code.</li>
+                    <li>Model Context Protocol (MCP), LangSmith, Phoenix.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="assessment">
+            <h2>Assessment & Deliverables</h2>
+            <div class="card">
+                <ul>
+                    <li>Weekly labs and guided practices.</li>
+                    <li>7+ course‑end projects across different modules.</li>
+                    <li>Capstone project with presentation and documentation.</li>
+                    <li>Participation in live demos and discussions.</li>
+                    <li>Final portfolio of working agents, UX prototypes, and strategy artifacts.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+</div>
+
+<script>
+    // Smooth scrolling for sidebar links
+    document.querySelectorAll('.nav-list a').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 16,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Collapsible modules
+    document.querySelectorAll('.module').forEach(function (module) {
+        const header = module.querySelector('.module-header');
+        const icon = module.querySelector('.module-toggle-icon');
+        header.addEventListener('click', function () {
+            const isOpen = module.classList.contains('open');
+            document.querySelectorAll('.module').forEach(function (m) {
+                m.classList.remove('open');
+                const i = m.querySelector('.module-toggle-icon');
+                if (i) i.textContent = '+';
+            });
+            if (!isOpen) {
+                module.classList.add('open');
+                icon.textContent = '−';
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
